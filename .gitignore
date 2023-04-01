@@ -1,0 +1,11 @@
+x64/
+.vs/
+Debug/
+Release/
+FuelEngine/Debug
+FuelEngine/Release
+FuelEngine/x64
+Game_Development/Debug
+Game_Development/Release
+Game_Development/x64
+glfw_build/
