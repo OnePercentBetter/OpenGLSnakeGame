@@ -11,6 +11,13 @@ namespace FuelEngine
 	private:
 		GLFWwindow* mWindow{ nullptr };
 
+		struct Callbacks
+		{
+			std::function<void(const KeyPressed&)>keyPressedFunc{ [](const KeyPressed&) {} };
+			std::function<void(const KeyReleased&)>keyReleasedFunc{ [](const KeyReleased&) {} };
+			std::function<void()> windowCloseFunc{ []() {} };
+		} mCallbacks;
+
 	public:
 		virtual void CreateWindow(int width, int height, const std::string& windowName) override;
 		virtual void CreateWindow(int width, int height, const std::string&& windowName) override;
@@ -21,6 +28,12 @@ namespace FuelEngine
 		virtual int getWidth() const override;
 		virtual int getHeight() const override;
 
+
+		virtual void SetKeyPressedCallback(std::function<void(const KeyPressed&)>callbackFunc) override;
+		virtual void SetKeyReleasedCallback(std::function<void(const KeyReleased&)>callbackFunc) override;
+		virtual void SetWindowClosedCallback(std::function<void()> callbackFunc) override;
+
+		virtual ~GLFWimplementation();
 	};
 
 }

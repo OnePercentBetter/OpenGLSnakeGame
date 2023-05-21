@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,25 +20,52 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FuelEngineApp.cpp" />
+    <ClCompile Include="src\FuelEngineEvents.cpp" />
     <ClCompile Include="src\GameWindow.cpp" />
     <ClCompile Include="src\GLFWCode\GLFWimplementation.cpp" />
+    <ClCompile Include="src\Image.cpp" />
+    <ClCompile Include="src\OpenGLCode\OpenGLImage.cpp" />
+    <ClCompile Include="src\OpenGLCode\OpenGLRenderer.cpp" />
+    <ClCompile Include="src\OpenGLCode\OpenGLShader.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\FuelEngine.h" />
     <ClInclude Include="src\FuelEngineApp.h" />
+    <ClInclude Include="src\FuelEngineEvents.h" />
+    <ClInclude Include="src\FuelEngineKeys.h" />
     <ClInclude Include="src\FuelEngineUtil.h" />
     <ClInclude Include="src\GameWindow.h" />
     <ClInclude Include="src\GLFWCode\GLFWimplementation.h" />
+    <ClInclude Include="src\Image.h" />
+    <ClInclude Include="src\ImplImage.h" />
+    <ClInclude Include="src\ImplRenderer.h" />
+    <ClInclude Include="src\ImplShader.h" />
+    <ClInclude Include="src\OpenGLCode\OpenGLImage.h" />
+    <ClInclude Include="src\OpenGLCode\OpenGLRenderer.h" />
+    <ClInclude Include="src\OpenGLCode\OpenGLShader.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\RendererTypes.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Unit.h" />
     <ClInclude Include="src\WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\glad\glad.vcxproj">
+      <Project>{bc99d5a9-1207-4f96-b5ce-a15bcd00ee2d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\glfw_build\src\glfw.vcxproj">
       <Project>{cc2a8de9-961f-3b44-ba8c-81d211793f41}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\stbi\stbi.vcxproj">
+      <Project>{eca6c95a-ec58-44b2-b3e5-78ecee103429}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -125,12 +152,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);FUELENGINE_LIB;FUELENGINE_WINDOWS;FUELENGINE_GLFW</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);FUELENGINE_OPENGL;FUELENGINE_WINDOWS;FUELENGINE_GLFW;FUELENGINE_LIB;FUELENGINE_DEBUG=2</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)FuelEngine\src;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)stbi;$(SolutionDir)glad\include;$(SolutionDir)FuelEngine\src;$(SolutionDir)glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +170,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);FUELENGINE_LIB;FUELENGINE_WINDOWS;FUELENGINE_GLFW</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FUELENGINE_LIB;FUELENGINE_WINDOWS;FUELENGINE_GLFW;FUELENGINE_OPENGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>

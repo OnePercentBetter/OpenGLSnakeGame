@@ -1,7 +1,8 @@
 #pragma once
-#include "FuelEngineUtil.h"
 #include "pch.h"
+#include "FuelEngineUtil.h"
 #include "WindowImplementation.h"
+#include "FuelEngineEvents.h"
 
 namespace FuelEngine
 {
@@ -19,10 +20,14 @@ namespace FuelEngine
 
 		static int getWidth();
 		static int getHeight();
+	
 
 		~GameWindow();
 
 
+		void SetKeyPressedCallback(std::function<void(const KeyPressed&)>callbackFunc);
+		void SetKeyReleasedCallback(std::function<void(const KeyReleased&)>callbackFunc);
+		void SetWindowClosedCallback(std::function<void()> callbackFunc);
 
 
 	private:
